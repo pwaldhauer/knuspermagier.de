@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>{% block title %}{% endblock %}knuspermagier.de</title>
+
+    <link rel="icon" href="/theme/img/favicon.ico" type="image/icon"/>
+
+    <link rel="stylesheet" href="{{ '/theme/css/style.css' | bust }}">
+    <link rel="alternate" type="application/rss+xml" title="knuspermagier.de RSS Feed"
+          href="https://knuspermagier.de/feed"/>
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="Der private Blog von Philipp Waldhauer">
+
+</head>
+<body>
+
+
+<header>
+    <div class="header-logo">
+        <a href="/"><img src="/theme/img/knuspermagier.svg" alt="knuspermagier.de"></a>
+    </div>
+</header>
+
+<main class="content {%if isSingle %}content-single{%endif%}">
+    {% block content %}{% endblock %}
+</main>
+
+<div class="random-footer js-random-footer"></div>
+
+<div class="search">
+    <input class="search-input" type="text" placeholder="Suchst du etwas?" aria-label="Suche">
+</div>
+
+
+<footer class="footer">
+    <a href="/philipp-waldhauer">Philipp Waldhauer</a> &middot;
+    <a href="/impressum">Impressum &amp; Datenschutz</a>
+</footer>
+
+
+
+
+<script src="/theme/js/lazysizes.min.js"></script>
+
+<style>
+    {{ randomFooter() | raw }}
+</style>
+<script>
+
+    // Search
+    const searchInput = document.querySelector('.search-input');
+    searchInput.addEventListener('keydown', function(ev) {
+        if(ev.keyCode === 13) {
+            location.href = '/search/' + encodeURIComponent(searchInput.value);
+        }
+    })
+
+    // Random footer
+    const footer = Math.floor(Math.random() * 3);
+    const elem = document.querySelector('.js-random-footer');
+    elem.classList.add('random-footer-' + footer);
+
+    const height = elem.getBoundingClientRect().height;
+
+    let v = false;
+    window.addEventListener('scroll', function (ev) {
+        if (v) {
+            return;
+        }
+
+        window.requestAnimationFrame(function () {
+            if (window.scrollY > (document.body.scrollHeight - document.body.clientHeight - height - 500)) {
+                elem.classList.add('visible');
+                v = true;
+            }
+        })
+    })
+
+
+</script>
+
+</body>
+</html>

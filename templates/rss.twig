@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     version="2.0">
+
+    <channel>
+        <title>knuspermagier.de</title>
+        <link>
+        https://knuspermagier.de</link>
+        <description>Der private Blog von Philipp Waldhauer</description>
+        <lastBuildDate>{{ currentDate | rssDate }}</lastBuildDate>
+        <language>de-DE</language>
+        <generator>blogchain-1.0.0</generator>
+
+        {% for post in posts %}
+
+            <item>
+                {% if post.meta.title %}
+                    <title><![CDATA[{{ post.meta.title }}]]></title>
+                {% else %}
+                    {% if post.title %}
+                        <title><![CDATA[{{ post.title }}]]></title>
+                    {% else %}
+                        <title>—</title>
+                    {% endif %}
+                {% endif %}
+
+
+                <link>
+                    {{ post.url() }}</link>
+                <pubDate>{{ post.date | rssDate }}</pubDate>
+                <dc:creator><![CDATA[knuspermagier.de]]></dc:creator>
+
+                <guid isPermaLink="false">{{ post.url() }}</guid>
+                <description><![CDATA[{{ post.currentContent() | striptags }}]]>
+                </description>
+                <content:encoded><![CDATA[
+                    {% if post.meta.quote %}
+                        <blockquote class="post-link__leading">
+                            <p>{{ post.meta.quote }}</p>
+                            <cite>&rarr;
+                                <a href="{{ post.meta.url }}">{{ post.title }}</a>
+                                  auf {{ post.meta.url | urlGetHost }}
+                            </cite>
+                        </blockquote>
+                    {% endif %}
+
+
+                    {{ post.currentContent() | raw }}
+
+
+                    <p>
+                        <a href="{{ post.url() }}">(&rarr; {{ post.url() }})</a>
+                    </p>
+                                 ]]>
+                </content:encoded>
+            </item>
+
+        {% endfor %}
+    </channel>
+</rss>

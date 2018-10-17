@@ -1,0 +1,16 @@
+<div class="post post-short {% if not post.title %}post--no-title{% endif %}  post--icon post--icon-short">
+
+    {% if post.title %}
+    <h2>
+        {% if post.meta.overline %}<div class="post-overline">{{post.meta.overline}}</div>  {% endif %}
+        <a href="{{post.url()}}">{{post.title}}</a>
+    </h2>
+    {% endif %}
+
+    {{ post.currentContent() | raw }}
+
+
+    <div class="post-meta">
+        <time class="post-meta__date"><a href="{{post.url()}}">{{post.date | htmlDate }}</a></time>
+    </div>
+</div>

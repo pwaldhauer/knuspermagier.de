@@ -1,0 +1,19 @@
+{
+    "name": "pwaldhauer/knuspermagier.de",
+    "authors": [
+        {
+            "name": "Philipp Waldhauer",
+            "email": "ich@philippwaldhauer.de"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "blogchain2000/core": "@dev",
+        "blogchain2000/router": "@dev",
+        "blogchain2000/api": "@dev",
+        "blogchain2000/web": "@dev",
+        "blogchain2000/admin": "@dev",
+        "knuspermagier/blogchain-randomfooter": "@dev",
+        "knuspermagier/blogchain-nameautolinker": "@dev"
+    }
+}

@@ -1,0 +1,718 @@
+@import "typo.scss";
+
+$small-breakpoint: 600px;
+$color-accent: #BA193A;
+
+@mixin marginY($margin: 10rem) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin blockWidth($width: 600px) {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $width;
+
+  @media (max-width: $width) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media (max-width: $small-breakpoint) {
+    font-size: 50%;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #fff;
+
+  @include text-md;
+}
+
+a, a:visited, a:active {
+  color: $color-accent;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.header-logo {
+  @include marginY(5rem);
+
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+
+    width: 150px;
+    display: block;
+
+    @media (max-width: $small-breakpoint) {
+      margin: auto;
+    }
+  }
+
+}
+
+.post {
+  max-width: 1200px;
+  margin: 25rem auto;
+
+  @media (max-width: $small-breakpoint) {
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+  }
+}
+
+.search {
+  max-width: 1200px;
+  margin: 5rem auto;
+
+  @media (max-width: $small-breakpoint) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+
+  .search-input {
+    appearance: none;
+    border-radius: 0;
+    display: block;
+
+    width: 600px;
+    max-width: 100%;
+
+    margin: auto;
+
+    @include text-md;
+    padding: 1rem;
+    border: $color-accent 1px solid;
+    outline: none;
+
+    text-align: center;
+  }
+}
+
+.search-headline {
+  max-width: 1200px;
+  margin: 10rem auto -15rem auto;
+
+  @media (max-width: $small-breakpoint) {
+    margin-bottom: -5rem;
+  }
+
+  h2 {
+    @include text-lg;
+    margin: 2rem auto;
+    @include blockWidth();
+
+    font-style: italic;
+  }
+}
+
+.post {
+
+  position: relative;
+
+  h1, h2, h3 {
+    margin: 2rem auto;
+    @include blockWidth();
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  h2 {
+    @include text-xl;
+    margin-bottom: 3rem;
+  }
+  h3 {
+    @include text-lg;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .post-overline{
+    @include text-md;
+    margin-top: 0;
+    font-size: 1.6rem;
+  }
+
+  h4 {
+    @include text-md;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  p, ul, ol, blockquote {
+    @include text-md;
+
+    margin: 2rem auto;
+    @include blockWidth();
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul, ol {
+
+    li {
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: $small-breakpoint) {
+      margin-left: 4rem;
+    }
+  }
+
+  .post-link__leading {
+    margin-bottom: 4rem;
+  }
+
+  blockquote {
+
+    p {
+      border-left: 1px $color-accent solid;
+      padding: 1rem 2rem;
+
+      @include text-sm;
+      font-style: italic;
+      margin: 0;
+    }
+
+    cite {
+      display: block;
+      @include text-sm;
+      font-style: italic;
+      @include blockWidth();
+
+      text-align: right;
+    }
+  }
+
+  pre {
+    @include mono-sm();
+    @include blockWidth();
+    @include marginY(5rem);
+    padding: 0rem 3rem;
+
+    background: #002b36;
+
+    white-space: pre-wrap; /* CSS3 */
+    white-space: -moz-pre-wrap; /* Mozilla, post millennium */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+  }
+
+  
+  &.post--icon {
+    h2:before {
+      content: "ICON";
+      display: block;
+      width: 30px;
+      height: 30px;
+
+      position: absolute;
+      top: 3px;
+      margin-left: -50px;
+
+      @media (max-width: 750px) {
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        max-width: 600px;
+        margin: 0 auto 5px auto;
+        height: auto;
+      }
+    }
+
+    &.post--no-title {
+
+
+      @media (max-width: 750px) {
+
+        > :first-child:before {
+          content: "ICON";
+          display: block;
+
+          position: static;
+          top: auto;
+          left: auto;
+          width: auto;
+          max-width: 600px;
+          margin: 0 0rem 5px 0rem;
+          height: auto;
+          text-align: left;
+        }
+
+        > :first-child:not(p):before {
+          margin: 0 2rem 5px 2rem;
+        }
+      }
+
+      @media (min-width: 751px) {
+        p:first-of-type:before {
+          content: "ICON";
+          display: block;
+          width: 30px;
+          height: 30px;
+
+          position: absolute;
+          margin-top: 3px;
+          margin-left: -50px;
+        }
+      }
+    }
+  }
+
+  &.post--icon-micro {
+    h2:before {
+      content: "🍩";
+    }
+
+    &.post--no-title {
+      @media (max-width: 750px) {
+        > :first-child:before {
+          content: "🍩";
+        }
+      }
+
+      @media (min-width: 751px) {
+        p:first-of-type:before {
+          content: "🍩";
+        }
+      }
+    }
+  }
+
+  &.post--icon-music {
+    h2:before {
+      content: "🎶";
+    }
+
+    &.post--no-title {
+      @media (max-width: 750px) {
+        > :first-child:before {
+          content: "🎶";
+        }
+      }
+
+      @media (min-width: 751px) {
+        p:first-of-type:before {
+          content: "🎶";
+        }
+      }
+    }
+  }
+
+
+  &.post--icon-short {
+    h2:before {
+      content: "📃";
+      display: none;
+    }
+
+    &.post--no-title {
+      @media (max-width: 750px) {
+        > :first-child:before {
+          content: "📃";
+        }
+      }
+
+      @media (min-width: 751px) {
+        p:first-of-type:before {
+          content: "📃";
+        }
+      }
+    }
+  }
+
+
+
+  .post-icon-container {
+    position: absolute;
+    top: 3px;
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+    height: 70px;
+
+    @media (max-width: 750px) {
+      position: static;
+      top: auto;
+      left: auto;
+      width: auto;
+      max-width: 600px;
+      margin: 0 auto;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      height: auto;
+    }
+  }
+
+  .post-icon {
+    margin-left: -50px;
+    width: 35px;
+    margin-right: 15px;
+
+    @media (max-width: 750px) {
+      margin: 0 0 5px 0;
+      display: block;
+    }
+  }
+
+  .post-meta {
+    @include blockWidth();
+
+    .post-meta__date {
+      @include text-sm;
+      color: #666;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  figure {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    figcaption {
+      @include text-sm;
+      text-align: right;
+      display: block;
+
+      margin-top: 1rem;
+
+      @media (max-width: $small-breakpoint) {
+        text-align: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+  }
+
+  hr {
+    text-align: center;
+    font-size: 75%;
+    padding-top: 5px;
+    position: relative;
+    top: 8px;
+    border: none;
+  }
+
+  hr:before {
+    content: "***"
+  }
+
+  .note {
+    @include marginY(5rem);
+    padding: 5rem;
+
+    @media (max-width: $small-breakpoint) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    p {
+      @include text-sm();
+    }
+  }
+
+}
+
+.post-long {
+
+  h2 {
+    @include text-xxl;
+  }
+
+  h3 {
+    @include text-xl;
+  }
+
+  h4 {
+    @include text-lg;
+  }
+
+  p, ul, ol {
+    @include serif-md;
+  }
+}
+
+.position-relative {
+  position: relative;
+}
+
+/*
+
+
+.post-micro__container {
+  max-width: 650px;
+  margin: 0 auto 1rem auto;
+  border: 1px #aaa solid;
+
+  padding: 0.5rem 0 2.5rem 0;
+}
+
+*/
+
+.pagination {
+  @include marginY(10rem);
+  list-style-type: none;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  .pagination-item {
+
+  }
+
+  .pagination-link {
+
+    padding: 0 1rem;
+
+  }
+
+  .pagination-item--active .pagination-link {
+    color: inherit;
+    font-weight: bold;
+
+    text-decoration: none;
+  }
+
+}
+
+.note {
+  @include marginY(15rem);
+
+  padding: 3rem;
+
+  border: 1px $color-accent solid;
+  @include blockWidth();
+
+  @include text-sm();
+
+  ul {
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include text-sm();
+  }
+
+}
+
+.footer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  @include text-sm;
+}
+
+.random-footer {
+  position: relative;
+  height: calc(100vw / (16 / 9));
+
+  background-color: #ddd;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 25%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+// todo
+
+.post {
+  .size-big img, video.size-big {
+    display: block;
+    max-width: 100%;
+  }
+
+  .size-default {
+    max-width: 600px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .position-right {
+    float: right;
+  }
+
+  .position-center {
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 600px;
+
+    text-align: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.post .footnote {
+  width: 200px;
+  font-size: 75%;
+
+  float: right;
+}
+
+// recipes
+
+.ingredient .item {
+  background-color: lime;
+}
+
+.recipe-ingredients {
+  ul {
+    @include text-sm;
+  }
+}
+
+.recipe-steps, .recipe-ingredients {
+
+  max-width: 1024px;
+  margin: 4rem auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.recipe-step .ingredient {
+  background-color: lime;
+}
+
+.recipe-step, .ingredient-list {
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  .timer {
+    background-color: #ddd;
+  }
+
+  width: 32%;
+
+  border: 1px $color-accent solid;
+  padding: 2rem 1rem;
+
+  h3 {
+    @include text-md;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
+  ul, ol, p  {
+    @include text-sm;
+
+  }
+
+  ul, ol {
+    margin-left: 2rem;
+  }
+
+}
+
+.blur-up {
+  opacity: 0.7;
+  transition: opacity ease-in-out 125ms;
+}
+
+.blur-up.lazyloaded {
+  opacity: 1;
+}
+
+
+
+
+.konzert-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.konzert-item {
+  width: 25%;
+  height: auto;
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  position: relative;
+  .konzert-label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    flex-wrap: wrap;
+
+    .konzert-artist {
+      width: 100%;
+      color: #fff;
+
+      font-size: 3.8rem;
+      line-height: 4.6rem;
+      text-transform: uppercase;
+    }
+
+    .konzert-location {
+      width: 100%;
+      color: #fff;
+    }
+  }
+}

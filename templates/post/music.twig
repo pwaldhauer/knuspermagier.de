@@ -1,0 +1,22 @@
+<div class="post post-short post-micro {% if not post.title %}post--no-title{% endif %}  post--icon post--icon-music">
+
+
+    {% if post.title %}
+    <div class="position-relative">
+
+    <h2>
+        <div class="post-overline">{{post.meta.artist}}</div>
+        <a href="{{post.url()}}">{{post.title}}</a>
+    </h2>
+    </div>
+    {% endif %}
+
+    {{ post.currentContent() | raw }}
+
+
+    <div class="post-meta">
+        <time class="post-meta__date">
+            <a href="{{post.url()}}">{{post.date | htmlDate }}</a>
+        </time>
+    </div>
+</div>

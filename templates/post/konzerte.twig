@@ -1,0 +1,71 @@
+<div class="post post-short {% if not post.title %}post--no-title{% endif %}  post--icon post--icon-short">
+
+    {% if post.title %}
+    <h2>
+        <a href="{{post.url()}}">{{post.title}}</a>
+    </h2>
+    {% endif %}
+
+
+    {{ post.currentContent() | raw }}
+
+
+
+
+
+</div>
+
+
+<div class="konzert-grid">
+
+    <div class="konzert-item">
+        <div class="konzert-label">
+            <div class="flex">
+            <div class="konzert-artist">Haggard</div>
+            <div class="konzert-location">Hamburg</div>
+            </div>
+        </div>
+        <video loop="loop" autoplay="autoplay" class="size-big" poster="https://knuspermagier.de/assets/IMG_2943-2152693568-1000-th.jpg"><source src="https://knuspermagier.de/assets/IMG_2943-2152693568-1000-th.mov"></video>
+    </div>
+
+    <div class="konzert-item">
+        <div class="konzert-label">
+            <div class="flex">
+            <div class="konzert-artist">Farin Urlaub Racing Team</div>
+            <div class="konzert-location">Berlin</div>
+            </div>
+        </div>
+        <video class="big2" autoplay="" loop=""><source src="https://archiv.knuspermagier.de/wp-content/uploads/2018/02/helge.m4v.mp4"></video>
+    </div>
+
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2018/01/IMG_5126.MOV.mp4" type="video/mp4"></video>
+    </div>
+
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" width="1280" height="720" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2017/12/ketty.m4v.mp4" type="video/mp4"></video>
+    </div>
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" width="1280" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2017/10/reinhard.m4v.mp4"></video>
+    </div>
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" width="1280" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2017/10/marcus.m4v.mp4"></video>
+    </div>
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" width="1200" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2017/08/IMG_8003.MOV.mov.mp4"></video>
+    </div>
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" width="1280" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2016/08/Helge-1.mp4-1.mp4"></video>
+    </div>
+
+
+    <div class="konzert-item">
+        <video autoplay="" loop="" width="1280" class="big2"><source src="https://archiv.knuspermagier.de/wp-content/uploads/2016/08/Gif.m4v.mp4"></video>
+    </div>
+</div>

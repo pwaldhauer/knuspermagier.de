@@ -1,0 +1,20 @@
+<div class="post post-short post--icon post--icon-music">
+
+    <div class="position-relative">
+        <h2>
+            <div class="post-overline">{{post.meta.venue}}, {{post.meta.city}}</div>
+            <a href="{{post.url()}}">{{post.meta.artist}}</a>
+        </h2>
+    </div>
+
+    {% set params = {'file': post.meta.file, 'mode': 'loop'} %}
+    {{ video(post, params) | raw }}
+
+    <p><em>&rarr; <a href="{{post.meta.spotifyUrl}}">{{post.meta.spotifyLabel}}</a> auf Spotify.</em></p>
+
+    {{ post.currentContent() | raw }}
+
+    <div class="post-meta">
+        <time class="post-meta__date"><a href="{{post.url()}}">{{post.date | htmlDate }}</a></time>
+    </div>
+</div>

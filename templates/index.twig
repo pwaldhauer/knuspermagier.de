@@ -1,0 +1,81 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+{% if isSingle %}
+    {% if posts[0].meta.title %}
+        {{ posts[0].meta.title }} –
+    {% else %}
+        {{ posts[0].title }} –
+    {% endif %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if query and posts[0]  %}
+<div class="search-headline">
+    <h2>Suchergebnisse zu “{{query}}”:</h2>
+</div>
+{% endif %}
+
+{% if not posts[0]  %}
+<div class="note">
+    <p>{% if query %}Hier gibt es nichts zum Thema “{{query}}”.{% else %}Da ist wohl ein kaputter Link! {% endif %}Vielleicht solltest du nochmal im
+        <a href="http://archiv.knuspermagier.de">Archiv</a>
+       suchen!
+    </p>
+</div>
+
+{% endif %}
+
+{% for post in posts %}
+
+{{ include('post/' ~ post.type ~ '.twig' ,{ post: post }) }}
+
+{% endfor %}
+
+{% if isSingle %}
+<div class="note">
+    <p>Kommentare, Feedback und andere Anmerkungen? Schreib mir auf
+        <a href="https://mstdn.io/@pwaldhauer">
+            Mastodon
+        </a>
+       oder
+        <a href="mailto:ich@philippwaldhauer.de?subject=Feedback zum Blogpost: ">eine E-Mail</a>
+       🤓
+    </p>
+</div>
+
+{% else %}
+
+{% if numberOfPages > 1 %}
+<ul class="pagination">
+    {% for page in 0..(numberOfPages-1) %}
+    <li class="pagination-item {% if page == currentPage %}pagination-item--active{% endif %}">
+
+
+        {% if mode == 'search' %}
+        <a class="pagination-link" href="/search/{{query}}/{{page}}">{{page + 1}}</a>
+        {% else %}
+        <a class="pagination-link" href="/page/{{page}}">{{page + 1}}</a>
+        {% endif %}
+
+    </li>
+
+    {% endfor %}
+</ul>
+
+{% if currentPage == numberOfPages - 1  %}
+<div class="note">
+    <p>Du suchst nach mehr? Ältere Posts von 2018 bis 2013 befinden sich im
+        <a href="http://archiv.knuspermagier.de">Archiv</a>
+       , viel Spaß!
+    </p>
+</div>
+{% endif %}
+{% endif %}
+{% endif %}
+
+
+{% endblock %}
+
