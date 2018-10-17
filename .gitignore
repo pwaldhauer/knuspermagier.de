@@ -1,0 +1,13 @@
+/.idea
+/node_modules
+/vendor
+/public/assets
+.DS_Store
+/public/theme/fonts
+/public/theme/css
+/public/theme/js
+/theme/scss/fonts.scss
+/content
+.DS_Store
+/.cred.json
+/public/admin

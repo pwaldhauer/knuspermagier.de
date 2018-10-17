@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "paths": [
+        "../blogchain-packages/",
+        "../blogchain-packages/blogchain2000/admin",
+        "../blogchain-packages/blogchain2000/api/",
+        "../blogchain-packages/blogchain2000/core/",
+        "../blogchain-packages/blogchain2000/router/",
+        "../blogchain-packages/blogchain2000/web/",
+        "../blogchain-packages/knuspermagier/blogchain-nameautolinker/",
+        "../blogchain-packages/knuspermagier/blogchain-randomfooter/"
+    ]
+}
