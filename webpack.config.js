@@ -1,35 +1,29 @@
 const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const extractSass = new ExtractTextPlugin('css/[name].css', {
-    allChunks: true,
-});
 
-const scssUse = ExtractTextPlugin.extract({use: ['css-loader', 'postcss-loader', 'sass-loader']});
-
-const base = {
+module.exports = {
+    mode: 'production',
     entry: {
-        //    main: './source/frontend/main.js',
+        main: './theme/js/main.js',
         style: './theme/scss/style.scss',
-        //backend: './source/gallery-backend/main.js'
     },
+
     output: {
         path: path.resolve('./public/theme'),
         filename: "js/[name].js",
-        publicPath: "http://0.0.0.0:8080/theme/",
     },
-    resolve: {
-        modules: ['node_modules'],
-    },
-    plugins: [],
+
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[id].css',
+        })
+    ],
+
     module: {
         rules: [
-            {
-                test: /\.scss$/,
-                enforce: 'pre',
-                loader: 'import-glob-loader'
-            },
             {
                 test: /\.js$/,
                 include: [
@@ -46,28 +40,18 @@ const base = {
                 ],
             },
             {
-                test: /\.vue$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
-                    {
-                        loader: 'vue-loader',
-                        options: {
-                            loaders: {
-                                js: 'babel-loader'
-                            }
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: scssUse
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
             }
         ]
+    },
+
+    optimization: {
+        minimizer: [new UglifyJsPlugin()]
     }
 };
-
-
-base.plugins.push(extractSass);
-
-
-module.exports = base;

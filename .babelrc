@@ -1,9 +1,8 @@
 {
   "presets": [
-    "env"
+    "@babel/preset-env"
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-es2015-shorthand-properties"
+    "@babel/plugin-proposal-class-properties"
   ]
 }
