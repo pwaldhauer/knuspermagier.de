@@ -85,7 +85,7 @@ $container->share(\Blogchain\Core\Authentication\UserProvider::class, function()
             return new User(
                 $item['username'], $item['email'], $item['password']
             );
-        }, json_decode(file_get_contents('./.cred.json'), true))
+        }, json_decode(file_get_contents(__DIR__ . '/.cred.json'), true))
     );
 });
 

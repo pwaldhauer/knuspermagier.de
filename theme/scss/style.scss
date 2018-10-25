@@ -673,6 +673,39 @@ a, a:visited, a:active {
 
 
 
+.post-meta__like {
+  cursor: pointer;
+
+  .post-meta__like-count {
+    @include text-sm;
+    font-size: 1.5rem;
+    color: #666;
+  }
+
+
+
+  svg {
+    width: 16px;
+    fill: red;
+
+    position: relative;
+    margin-left: 6px;
+    top: 7px;
+  }
+
+
+  &.liked {
+    cursor: initial;
+    svg {
+      fill: #666;
+    }
+  }
+}
+
+
+
+
+
 .konzert-grid {
   display: flex;
   flex-wrap: wrap;
@@ -716,3 +749,5 @@ a, a:visited, a:active {
     }
   }
 }
+
+
