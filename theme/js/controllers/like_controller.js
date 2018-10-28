@@ -1,15 +1,15 @@
 import {Controller} from "stimulus"
 
 export default class extends Controller {
-    static targets = ['container', 'count'];
+    static targets = ['count'];
 
     connect() {
         const liked = parseInt(window.localStorage.getItem(`${this.data.get('slug')}`), 10) === 1;
-        this.containerTarget.classList.toggle('liked', liked);
+        this.element.classList.toggle('liked', liked);
     }
 
     like(event) {
-        if(this.containerTarget.classList.contains('liked')) {
+        if(this.element.classList.contains('liked')) {
             return;
         }
 
@@ -19,7 +19,7 @@ export default class extends Controller {
         }).then(() => {
             this.data.set('current', parseInt(this.data.get('current'), 10) + 1);
             this.countTarget.innerHTML = this.data.get('current');
-            this.containerTarget.classList.add('liked');
+            this.element.classList.add('liked');
             window.localStorage.setItem(`${this.data.get('slug')}`, 1);
         });
     }

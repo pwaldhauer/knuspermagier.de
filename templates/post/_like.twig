@@ -1,4 +1,4 @@
-<span class="post-meta__like" data-controller="like" data-like-slug="{{ post.id }}" data-like-current="{% if post.data.likes %}{{ post.data.likes }}{% else %}0{% endif %}"  data-action="click->like#like" data-target="like.container">
+<span class="post-meta__like" data-controller="like" data-like-slug="{{ post.id }}" data-like-current="{% if post.data.likes %}{{ post.data.likes }}{% else %}0{% endif %}"  data-action="click->like#like">
             <span class="post-meta__like-count" data-target="like.count">{% if post.data.likes %}{{ post.data.likes }}{% else %}0{% endif %}</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="svgheart"
                  viewBox="0 0 100 125"><path

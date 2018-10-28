@@ -1,12 +1,11 @@
 import {Controller} from "stimulus"
 
 export default class extends Controller {
-    static targets = ['footer'];
 
     connect() {
 
         const footer = Math.floor(Math.random() * 3);
-        const elem = this.footerTarget;
+        const elem = this.element;
         elem.classList.add('random-footer-' + footer);
 
         const height = elem.getBoundingClientRect().height;
