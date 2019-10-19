@@ -28,7 +28,7 @@
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.x",
-    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.1.2"
   }
 }
