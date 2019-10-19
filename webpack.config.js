@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
@@ -16,10 +17,13 @@ module.exports = {
     },
 
     plugins: [
+
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
             chunkFilename: 'css/[id].css',
-        })
+        }),
+
+    //    new BundleAnalyzerPlugin()
     ],
 
     module: {
@@ -52,6 +56,14 @@ module.exports = {
     },
 
     optimization: {
-        minimizer: [new UglifyJsPlugin()]
+        minimizer: [new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            uglifyOptions: {
+                compress: false,
+                ecma: 6,
+                mangle: true
+            }
+        })]
     }
 };

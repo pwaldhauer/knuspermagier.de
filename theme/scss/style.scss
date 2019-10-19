@@ -1,5 +1,7 @@
 @import "typo.scss";
 
+$color-dark-mode-background: #000;
+$color-dark-mode-text: #aaa;
 $small-breakpoint: 600px;
 $color-accent: #BA193A;
 
@@ -61,7 +63,7 @@ a, a:visited, a:active {
   margin-left: auto;
   margin-right: auto;
 
-  img {
+  svg {
 
     width: 150px;
     display: block;
@@ -109,6 +111,13 @@ a, a:visited, a:active {
     outline: none;
 
     text-align: center;
+
+    background-color: #fff;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-dark-mode-background;
+      color: $color-dark-mode-text;
+    }
   }
 }
 
@@ -551,6 +560,7 @@ a, a:visited, a:active {
   background-repeat: no-repeat;
   background-position: center bottom;
 
+
   &:before {
     content: "";
     position: absolute;
@@ -604,63 +614,6 @@ a, a:visited, a:active {
   float: right;
 }
 
-// recipes
-
-.ingredient .item {
-  background-color: lime;
-}
-
-.recipe-ingredients {
-  ul {
-    @include text-sm;
-  }
-}
-
-.recipe-steps, .recipe-ingredients {
-
-  max-width: 1024px;
-  margin: 4rem auto;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-}
-
-.recipe-step .ingredient {
-  background-color: lime;
-}
-
-.recipe-step, .ingredient-list {
-  &:not(:last-child) {
-    margin-right: 2rem;
-  }
-
-  .timer {
-    background-color: #ddd;
-  }
-
-  width: 32%;
-
-  border: 1px $color-accent solid;
-  padding: 2rem 1rem;
-
-  h3 {
-    @include text-md;
-    margin-top: 0rem;
-    margin-bottom: 1rem;
-  }
-  ul, ol, p  {
-    @include text-sm;
-
-  }
-
-  ul, ol {
-    margin-left: 2rem;
-  }
-
-}
-
 .blur-up {
   opacity: 0.7;
   transition: opacity ease-in-out 125ms;
@@ -684,9 +637,9 @@ a, a:visited, a:active {
 
 
 
-  svg {
+  .svgheart {
     width: 16px;
-    fill: red;
+    fill: $color-accent;
 
     position: relative;
     margin-left: 6px;
@@ -750,4 +703,69 @@ a, a:visited, a:active {
   }
 }
 
+.logo__sechseck {
+  stroke: #000;
+}
 
+.logo__mouth {
+  fill: white;
+}
+
+.logo__helm {
+  fill: white;
+  stroke: black;
+}
+
+.logo__strokes {
+  fill: none;
+  stroke: #000;
+}
+
+.logo__haare {
+  fill: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+
+    background-color: $color-dark-mode-background;
+    color: $color-dark-mode-text;
+  }
+
+  .logo__sechseck {
+    stroke: $color-dark-mode-text;
+  }
+
+  .logo__mouth {
+    fill: $color-dark-mode-background;
+    stroke: $color-dark-mode-text;
+    stroke-width: 5;
+  }
+
+  .logo__helm {
+    fill: $color-dark-mode-background;
+    stroke: $color-dark-mode-text;
+  }
+
+  .logo__strokes {
+    fill: none;
+    stroke: $color-dark-mode-text;
+  }
+
+  .logo__haare {
+    fill: $color-dark-mode-background;
+    stroke: $color-dark-mode-text;
+    stroke-width: 5;
+
+  }
+
+
+  .random-footer {
+    background-color: #333;
+    &:before {
+
+      height: 45%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+  }
+}
